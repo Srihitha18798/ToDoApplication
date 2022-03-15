@@ -6,15 +6,33 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.sritadip.todoapplication.databinding.ItemViewBinding
-import kotlinx.android.synthetic.main.item_view.view.*
+import com.sritadip.todoapplication.databinding.PendingItemViewBinding
+import kotlinx.android.synthetic.main.pending_item_view.view.*
 
 class ToDoAdapter : RecyclerView.Adapter<ToDoAdapter.MyViewHolder>() {
     private var toDoList: MutableList<Todo> = arrayListOf()
+    private val pendingList:MutableList<Todo> = arrayListOf()
+    private val completedList:MutableList<Todo> = arrayListOf()
+
+    private fun init(){
+
+
+        for(item in toDoList){
+            if(item.status=="PENDING"){
+                pendingList.add(item)
+            }
+            else{
+                completedList.add(item)
+            }
+        }
+
+        Log.e("pending list",pendingList.toString())
+        Log.e("completed list",completedList.toString())
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         return MyViewHolder(
-            ItemViewBinding.inflate(
+            PendingItemViewBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -34,7 +52,7 @@ class ToDoAdapter : RecyclerView.Adapter<ToDoAdapter.MyViewHolder>() {
     }
 
 
-    class MyViewHolder(val binding: ItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
+    class MyViewHolder(val binding: PendingItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
         val textView1: TextView = itemView.description
 
     }
@@ -43,6 +61,7 @@ class ToDoAdapter : RecyclerView.Adapter<ToDoAdapter.MyViewHolder>() {
     fun addData(list: List<Todo>) {
         val size = this.toDoList.size
         this.toDoList.addAll(list)
+        init()
         val sizeNew = this.toDoList.size
         notifyItemRangeChanged(size, sizeNew)
     }

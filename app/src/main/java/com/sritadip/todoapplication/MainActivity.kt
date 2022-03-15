@@ -1,13 +1,7 @@
 package com.sritadip.todoapplication
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
-import android.util.Log
-import android.widget.Toast
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.appcompat.app.AppCompatActivity
 import com.sritadip.todoapplication.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
 

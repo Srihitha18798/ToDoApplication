@@ -1,12 +1,7 @@
 package com.sritadip.todoapplication
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class ToDoRepository(private val retroInstance: RetroInstance) {
 
@@ -14,7 +9,7 @@ class ToDoRepository(private val retroInstance: RetroInstance) {
 
 
 
-    suspend fun fetchToDoList() {
+    private suspend fun fetchToDoList() {
         val response = retroInstance.apiService.getToDOList()
         toDoList.postValue(response)
 

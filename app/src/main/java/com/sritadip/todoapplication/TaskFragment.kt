@@ -2,14 +2,13 @@ package com.sritadip.todoapplication
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.fragment_task.*
 import kotlinx.android.synthetic.main.fragment_task.view.*
 
 class TaskFragment : Fragment() {
@@ -51,6 +50,7 @@ class TaskFragment : Fragment() {
                 if (it != null) {
                     Log.e("data", it.toString())
                     adapter?.addData(it)
+
                 } else {
                     Toast.makeText(requireContext(), "Error getting data", Toast.LENGTH_SHORT)
                         .show()
